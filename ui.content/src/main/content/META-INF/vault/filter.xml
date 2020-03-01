@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/wp2aem" mode="merge"/>
+    <filter root="/content/wp2aem" mode="merge"/>
+    <filter root="/content/dam/wp2aem" mode="merge"/>
+    <filter root="/content/experience-fragments/wp2aem" mode="merge"/>
+</workspaceFilter>
