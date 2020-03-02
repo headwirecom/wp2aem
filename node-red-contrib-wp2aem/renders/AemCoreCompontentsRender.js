@@ -45,5 +45,10 @@ class AemCoreCompontentsRender extends Renderer {
     return `<strong>${text}</strong>`
   }
 
+  *Italic(italic) {
+    let text = (yield).join('')
+    return `<em>${text}</em>`
+  }
+
 }
 module.exports = AemCoreCompontentsRender
