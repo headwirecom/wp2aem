@@ -1,0 +1,32 @@
+<script type="text/javascript">
+  RED.nodes.registerType('FirstNode', {
+    category: "WP2AEM",
+    color: "#FD762C",
+    defaults: {
+      name: {
+        value: ""
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "Adobe_Experience_Manager_logo_SCREEN_RGB_48px.png",
+    label: function() {
+      return this.name || 'Core Components Mapper';
+    }
+  });
+</script>
+
+<script type="text/x-red" data-help-name="FirstNode">
+  <p>The simplest of all Nodes to implement<br/></p>
+</script>
+
+<script type="text/x-red" data-template-name="FirstNode">
+  <div class="form-row">
+    <label form="node-input-name"><i class="icon-tag"></i> Topic</label>
+    <label type="text" id="node-input-topic" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label form="node-input-name"><i class="icon-tag"></i> Topic</label>
+    <label type="text" id="node-input-topic" placeholder="Topic">
+  </div>
+</script>

@@ -1,0 +1,204 @@
+[
+    {
+        "id": "a2790401.0fe348",
+        "type": "tab",
+        "label": "Single Page Sample",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1cde645a.5528dc",
+        "type": "file in",
+        "z": "a2790401.0fe348",
+        "name": "read template",
+        "filename": "/Users/gaston/headwire3/conferences/adobe-summit-2020/workspace/wp2aem/ui.content/src/main/content/jcr_root/conf/wp2aem/settings/wcm/templates/page-content/initial/.content.xml",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "f8dca1a3.767fc"
+            ]
+        ]
+    },
+    {
+        "id": "35b57f77.b499c",
+        "type": "debug",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 310,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f8dca1a3.767fc",
+        "type": "xml",
+        "z": "a2790401.0fe348",
+        "name": "xml to json",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "1a73ab72.78f955"
+            ]
+        ]
+    },
+    {
+        "id": "34e139a4.57b966",
+        "type": "file",
+        "z": "a2790401.0fe348",
+        "name": ".content.xml",
+        "filename": "/Users/gaston//headwire3/conferences/adobe-summit-2020/workspace/wp2aem/ui.content/src/main/content/jcr_root/content/wp2aem/us/en/node-red/.content.xml",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "35b57f77.b499c"
+            ]
+        ]
+    },
+    {
+        "id": "965b7529.fb7828",
+        "type": "xml",
+        "z": "a2790401.0fe348",
+        "name": "json-to-xml",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "34e139a4.57b966"
+            ]
+        ]
+    },
+    {
+        "id": "1a73ab72.78f955",
+        "type": "function",
+        "z": "a2790401.0fe348",
+        "name": "enrich template",
+        "func": "//msg.payload['jcr:root']['$']['jcr:primaryType'] = 'cq:Page'\n//msg.payload['jcr:root']['jcr:content'][0]['root'][0] = msg.components\n//delete msg.payload['jcr:root']['$']['allowedPaths']\n\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "965b7529.fb7828"
+            ]
+        ]
+    },
+    {
+        "id": "d2b6ca81.e6c498",
+        "type": "inject",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "795ba64f.ff9f38"
+            ]
+        ]
+    },
+    {
+        "id": "795ba64f.ff9f38",
+        "type": "http request",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://unit42.paloaltonetworks.com/wp-json/wp/v2/posts/104851",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "16755522.adf40b"
+            ]
+        ]
+    },
+    {
+        "id": "16755522.adf40b",
+        "type": "json",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [
+                "94a612fa.aac94"
+            ]
+        ]
+    },
+    {
+        "id": "94a612fa.aac94",
+        "type": "FirstNode",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "133b4190.4a6e3e"
+            ]
+        ]
+    },
+    {
+        "id": "133b4190.4a6e3e",
+        "type": "change",
+        "z": "a2790401.0fe348",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "components",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 120,
+        "wires": [
+            [
+                "1cde645a.5528dc"
+            ]
+        ]
+    }
+]
