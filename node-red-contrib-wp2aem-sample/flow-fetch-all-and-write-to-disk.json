@@ -388,7 +388,7 @@
         "type": "function",
         "z": "79da2ecb.7de1b",
         "name": "Define .content.xml filename and path",
-        "func": "// TODO: Extract into configuration\nmsg.contentXmlPath = `ui.content/src/main/content/jcr_root/content/wp2aem/us/en/${msg.payload.slug}/.content.xml`\nconsole.log(msg.contentXmlPath)\nreturn msg;",
+        "func": "// TODO: Extract into configuration\nlet dateParts = msg.payload.date.match(/(\\d{4})-(\\d{2})-(\\d{2}).*/);\nlet datePath = `${dateParts[1]}/${dateParts[2]}/${dateParts[3]}`\n\nmsg.contentXmlPath = `ui.content/src/main/content/jcr_root/content/wp2aem/us/en/posts/${datePath}/${msg.payload.slug}/.content.xml`\nconsole.log(msg.contentXmlPath)\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 190,
