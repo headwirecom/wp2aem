@@ -34,7 +34,15 @@ $ cd ~/.node-red
 $ npm link node-red-contrib-wp2aem
 ```
 
-3. Restart Node-RED.
+3. Stop Node-RED.
+
+4. Start Node-RED from the `wp2aem` project directory. This is required since node-red will read/write files relative to this directory.
+
+```
+$ cd wp2aem
+$ node-red
+```
+
 
 ## Running a Node-RED Flow
 

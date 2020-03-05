@@ -11,7 +11,6 @@ module.exports = function(RED) {
     var node = this;
 
     this.on('input', function(msg) {
-      var outMsg = { payload: {} };
 
       // TODO: Remove
       console.log(`HTML: ${msg.payload.content.rendered}`)
@@ -28,14 +27,14 @@ module.exports = function(RED) {
       console.log(`Sanitized HTML: ${html}`)
 
       try {
-        outMsg.payload = AemCoreCompontentsRender.render(
+        msg.payload = AemCoreCompontentsRender.render(
           HTMLSource.fromRaw(html).convertTo(OffsetSource)
         );
       } catch (err) {
         console.log(err)
       }
 
-      node.send(outMsg);
+      node.send(msg);
     });
   }
   RED.nodes.registerType("FirstNode", firstNode);
