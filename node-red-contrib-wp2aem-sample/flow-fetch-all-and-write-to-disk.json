@@ -155,7 +155,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 150,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "9ec93f16.4b843"
@@ -174,7 +174,7 @@
         "stream": false,
         "addname": "",
         "x": 410,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "885543f4.baa37"
@@ -201,7 +201,7 @@
         "to": "",
         "reg": false,
         "x": 630,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "48c8147.4761aec"
@@ -217,7 +217,7 @@
         "action": "",
         "pretty": false,
         "x": 1070,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "e6c1682a.4347c8"
@@ -238,7 +238,7 @@
         "proxy": "",
         "authType": "",
         "x": 850,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "2ffc6673.90278a"
@@ -332,7 +332,7 @@
         "type": "function",
         "z": "79da2ecb.7de1b",
         "name": "enrich template",
-        "func": "//msg.payload['jcr:root']['$']['jcr:primaryType'] = 'cq:Page'\n//msg.payload['jcr:root']['jcr:content'][0]['root'][0] = msg.components\n//delete msg.payload['jcr:root']['$']['allowedPaths']\n\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
+        "func": "// Inject jcr:content properties\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:title'] = msg.page.jcr_title\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:description'] = msg.page.jcr_description\nmsg.payload['jcr:root']['jcr:content'][0]['$']['sling:vanityPath'] = msg.page.sling_vanityPath\n\n    \n// Inject components\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 520,
@@ -348,7 +348,7 @@
         "type": "FirstNode",
         "z": "79da2ecb.7de1b",
         "name": "",
-        "x": 480,
+        "x": 820,
         "y": 400,
         "wires": [
             [
@@ -375,7 +375,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 760,
+        "x": 1080,
         "y": 400,
         "wires": [
             [
@@ -395,7 +395,7 @@
         "y": 400,
         "wires": [
             [
-                "43d1f47b.a4d93c"
+                "a8957434.a77368"
             ]
         ]
     },
@@ -423,6 +423,22 @@
         "wires": [
             [
                 "4a972c55.d3ce24"
+            ]
+        ]
+    },
+    {
+        "id": "a8957434.a77368",
+        "type": "function",
+        "z": "79da2ecb.7de1b",
+        "name": "Page Properties Mapper",
+        "func": "// TODO: Strip HTML from jcr_description\nmsg.page = {\n    jcr_title: msg.payload.title.rendered,\n    jcr_description: msg.payload.excerpt.rendered,\n    sling_vanityPath: msg.payload.slug\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 400,
+        "wires": [
+            [
+                "43d1f47b.a4d93c"
             ]
         ]
     }
