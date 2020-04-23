@@ -1,17 +1,17 @@
 [
     {
-        "id": "d59a7e9b.57d27",
+        "id": "71ef7afb.1884e4",
         "type": "tab",
         "label": "Single Page Sample",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "a69d00d2.e1a5d",
+        "id": "d9ee2b6c.231348",
         "type": "file in",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "read template",
-        "filename": "/Users/gaston/headwire3/conferences/adobe-summit-2020/workspace/wp2aem/ui.content/src/main/content/jcr_root/conf/wp2aem/settings/wcm/templates/page-content/initial/.content.xml",
+        "filename": "ui.content/src/main/content/jcr_root/conf/wp2aem/settings/wcm/templates/page-content/initial/.content.xml",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
@@ -20,14 +20,14 @@
         "y": 200,
         "wires": [
             [
-                "361119c4.27e486"
+                "35ef2d2d.619922"
             ]
         ]
     },
     {
-        "id": "71228804.da7d38",
+        "id": "7a4a93a5.1ce16c",
         "type": "debug",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -39,9 +39,9 @@
         "wires": []
     },
     {
-        "id": "361119c4.27e486",
+        "id": "35ef2d2d.619922",
         "type": "xml",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "xml to json",
         "property": "payload",
         "attr": "",
@@ -50,16 +50,16 @@
         "y": 200,
         "wires": [
             [
-                "8c6abc1.4996c4"
+                "f4ad31d5.d19e1"
             ]
         ]
     },
     {
-        "id": "325f089.295fbf8",
+        "id": "d64efb34.0075c8",
         "type": "file",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": ".content.xml",
-        "filename": "/Users/gaston//headwire3/conferences/adobe-summit-2020/workspace/wp2aem/ui.content/src/main/content/jcr_root/content/wp2aem/us/en/migration-sample/.content.xml",
+        "filename": "ui.content/src/main/content/jcr_root/content/wp2aem/us/en/migration-sample/.content.xml",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "true",
@@ -68,14 +68,14 @@
         "y": 280,
         "wires": [
             [
-                "71228804.da7d38"
+                "7a4a93a5.1ce16c"
             ]
         ]
     },
     {
-        "id": "ebca01be.121ad",
+        "id": "c800e057.7a8e7",
         "type": "xml",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "json-to-xml",
         "property": "payload",
         "attr": "",
@@ -84,14 +84,14 @@
         "y": 200,
         "wires": [
             [
-                "325f089.295fbf8"
+                "d64efb34.0075c8"
             ]
         ]
     },
     {
-        "id": "8c6abc1.4996c4",
+        "id": "f4ad31d5.d19e1",
         "type": "function",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "enrich template",
         "func": "//msg.payload['jcr:root']['$']['jcr:primaryType'] = 'cq:Page'\n//msg.payload['jcr:root']['jcr:content'][0]['root'][0] = msg.components\n//delete msg.payload['jcr:root']['$']['allowedPaths']\n\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
         "outputs": 1,
@@ -100,14 +100,14 @@
         "y": 200,
         "wires": [
             [
-                "ebca01be.121ad"
+                "c800e057.7a8e7"
             ]
         ]
     },
     {
-        "id": "f7ca6c29.95a53",
+        "id": "f8d7f188.fba4d",
         "type": "inject",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "topic": "",
         "payload": "",
@@ -120,19 +120,19 @@
         "y": 60,
         "wires": [
             [
-                "eefa7823.fe8668"
+                "15a97434.91bb5c"
             ]
         ]
     },
     {
-        "id": "eefa7823.fe8668",
+        "id": "15a97434.91bb5c",
         "type": "http request",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "method": "GET",
         "ret": "txt",
         "paytoqs": false,
-        "url": "https://unit42.paloaltonetworks.com/wp-json/wp/v2/posts/104851",
+        "url": "https://techcrunch.com/wp-json/wp/v2/posts/1978700",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -141,14 +141,14 @@
         "y": 60,
         "wires": [
             [
-                "25520a79.9ed396"
+                "c391dc.7a021e28"
             ]
         ]
     },
     {
-        "id": "25520a79.9ed396",
+        "id": "c391dc.7a021e28",
         "type": "json",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "property": "payload",
         "action": "",
@@ -157,27 +157,27 @@
         "y": 60,
         "wires": [
             [
-                "3186a5f5.2bde3a"
+                "4eb19ab8.683a34"
             ]
         ]
     },
     {
-        "id": "3186a5f5.2bde3a",
+        "id": "4eb19ab8.683a34",
         "type": "FirstNode",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "x": 180,
         "y": 120,
         "wires": [
             [
-                "ba192b5d.e10438"
+                "90f419bd.7b77d8"
             ]
         ]
     },
     {
-        "id": "ba192b5d.e10438",
+        "id": "90f419bd.7b77d8",
         "type": "change",
-        "z": "d59a7e9b.57d27",
+        "z": "71ef7afb.1884e4",
         "name": "",
         "rules": [
             {
@@ -197,7 +197,7 @@
         "y": 120,
         "wires": [
             [
-                "a69d00d2.e1a5d"
+                "d9ee2b6c.231348"
             ]
         ]
     }

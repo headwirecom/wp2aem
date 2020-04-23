@@ -37,7 +37,7 @@
 
 1. Open a browser and visit [http://localhost:1880/](http://localhost:1880/).
 
-2. Click on the "Sing Page Sample" tab.
+2. Click on the "Single Page Sample" tab.
 
 3. Import the sample flow. Click the hamburger menu, then Import. Select `wp2aem/node-red-contrib-wp2aem-sample/flow-single-page-sample.json`.
 
