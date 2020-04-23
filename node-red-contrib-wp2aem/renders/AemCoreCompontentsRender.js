@@ -50,5 +50,9 @@ class AemCoreCompontentsRender extends Renderer {
     return `<em>${text}</em>`
   }
 
+  *Image(image) {
+    return `<img src="${image.attributes.url}"></img>`
+  }
+
 }
 module.exports = AemCoreCompontentsRender

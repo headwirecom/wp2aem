@@ -16,9 +16,10 @@ module.exports = function(RED) {
       console.log(`HTML: ${msg.payload.content.rendered}`)
 
       let html = sanitizeHtml(msg.payload.content.rendered, {
-        allowedTags: [ 'p', 'h1', 'h2', 'h3', 'b', 'i', 'em', 'strong', 'a' ],
+        allowedTags: [ 'p', 'h1', 'h2', 'h3', 'b', 'i', 'em', 'strong', 'a', 'img' ],
         allowedAttributes: {
-          'a': [ 'href' ]
+          'a': [ 'href' ],
+          'img': [ 'src' ]
         },
         allowedIframeHostnames: ['www.youtube.com']
       });
