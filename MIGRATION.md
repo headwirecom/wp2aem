@@ -1,7 +1,5 @@
 # WordPress to AEM Migration
 
-THIS IS A WIP AND READY FOR USE.
-
 ## Install Node-RED.
 
 1. Install Node-RED.
