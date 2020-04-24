@@ -132,7 +132,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": false,
-        "url": "https://techcrunch.com/wp-json/wp/v2/posts/1978700",
+        "url": "http://oh8stn.org/wp-json/wp/v2/posts/7349",
         "tls": "",
         "persist": false,
         "proxy": "",

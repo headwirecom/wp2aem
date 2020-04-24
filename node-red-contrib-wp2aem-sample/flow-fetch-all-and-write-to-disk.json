@@ -1,15 +1,15 @@
 [
     {
-        "id": "79da2ecb.7de1b",
+        "id": "4a7ce238.d8e8bc",
         "type": "tab",
         "label": "Fetch All and Write to Disk",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "8719ccd7.eb3e",
+        "id": "b018fa1.86fbf08",
         "type": "inject",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "topic": "",
         "payload": "",
@@ -22,19 +22,19 @@
         "y": 60,
         "wires": [
             [
-                "e6da57e9.8b80f8"
+                "b973f9f0.63f5a8"
             ]
         ]
     },
     {
-        "id": "e6da57e9.8b80f8",
+        "id": "b973f9f0.63f5a8",
         "type": "http request",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Fetch Post",
         "method": "GET",
         "ret": "txt",
         "paytoqs": false,
-        "url": "https://unit42.paloaltonetworks.com/wp-json/wp/v2/posts",
+        "url": "http://oh8stn.org/wp-json/wp/v2/posts",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -43,14 +43,14 @@
         "y": 60,
         "wires": [
             [
-                "3619ec6.4108a14"
+                "7d344b9f.0f9564"
             ]
         ]
     },
     {
-        "id": "3619ec6.4108a14",
+        "id": "7d344b9f.0f9564",
         "type": "function",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Get Paginated Post URLs",
         "func": "let paginatedUrls = []\n//for (let i = 2; i <= msg.headers['x-wp-totalpages']; i++) {   \nfor (let i = 2; i <= 2; i++) {   \n  let paginationUrl = `${msg.responseUrl}?page=${i}`     \n  paginatedUrls.push(paginationUrl)\n  console.log(paginationUrl)\n}\nmsg.payload = paginatedUrls\nreturn msg",
         "outputs": 1,
@@ -59,14 +59,14 @@
         "y": 160,
         "wires": [
             [
-                "2b6ebb72.581294"
+                "27c51c9d.053774"
             ]
         ]
     },
     {
-        "id": "90ceaceb.595f8",
+        "id": "14e71da2.2cb4c2",
         "type": "http request",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Request paginated results",
         "method": "GET",
         "ret": "txt",
@@ -80,14 +80,14 @@
         "y": 160,
         "wires": [
             [
-                "f8812a2c.91f8b8"
+                "9f2ff2f9.e54ca"
             ]
         ]
     },
     {
-        "id": "2b6ebb72.581294",
+        "id": "27c51c9d.053774",
         "type": "split",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Split on paginated URLs",
         "splt": "\\n",
         "spltType": "str",
@@ -99,14 +99,14 @@
         "y": 160,
         "wires": [
             [
-                "c5aadafc.4f7698"
+                "c428a1ee.5149f"
             ]
         ]
     },
     {
-        "id": "c5aadafc.4f7698",
+        "id": "c428a1ee.5149f",
         "type": "change",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "rules": [
             {
@@ -126,14 +126,14 @@
         "y": 160,
         "wires": [
             [
-                "90ceaceb.595f8"
+                "14e71da2.2cb4c2"
             ]
         ]
     },
     {
-        "id": "f8812a2c.91f8b8",
+        "id": "9f2ff2f9.e54ca",
         "type": "json",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "property": "payload",
         "action": "",
@@ -142,14 +142,14 @@
         "y": 160,
         "wires": [
             [
-                "ecbd39a3.40f278"
+                "d232eb12.98f858"
             ]
         ]
     },
     {
-        "id": "ecbd39a3.40f278",
+        "id": "d232eb12.98f858",
         "type": "function",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Get post URLs for page",
         "func": "let postUrls = []\nfor (let i = 0; i < msg.payload.length; i++) {   \n  let postUrl = msg.payload[i]._links.self[0].href     \n  postUrls.push(postUrl)\n  console.log(`==> ${postUrl}`)\n}\nmsg.payload = postUrls\nreturn msg;",
         "outputs": 1,
@@ -158,14 +158,14 @@
         "y": 260,
         "wires": [
             [
-                "9ec93f16.4b843"
+                "9da29da1.e1a34"
             ]
         ]
     },
     {
-        "id": "9ec93f16.4b843",
+        "id": "9da29da1.e1a34",
         "type": "split",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Split on paginated URLs",
         "splt": "\\n",
         "spltType": "str",
@@ -177,14 +177,14 @@
         "y": 260,
         "wires": [
             [
-                "885543f4.baa37"
+                "19a7a2ad.56403d"
             ]
         ]
     },
     {
-        "id": "885543f4.baa37",
+        "id": "19a7a2ad.56403d",
         "type": "change",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "rules": [
             {
@@ -204,14 +204,14 @@
         "y": 260,
         "wires": [
             [
-                "48c8147.4761aec"
+                "43cc9f92.9978a"
             ]
         ]
     },
     {
-        "id": "2ffc6673.90278a",
+        "id": "9285da2d.6ec868",
         "type": "json",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "property": "payload",
         "action": "",
@@ -220,14 +220,14 @@
         "y": 260,
         "wires": [
             [
-                "e6c1682a.4347c8"
+                "477d1643.933908"
             ]
         ]
     },
     {
-        "id": "48c8147.4761aec",
+        "id": "43cc9f92.9978a",
         "type": "http request",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Request next post page",
         "method": "GET",
         "ret": "txt",
@@ -241,16 +241,16 @@
         "y": 260,
         "wires": [
             [
-                "2ffc6673.90278a"
+                "9285da2d.6ec868"
             ]
         ]
     },
     {
-        "id": "24687e1f.622432",
+        "id": "7bd87955.a6d038",
         "type": "file in",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "read template",
-        "filename": "/Users/gaston/headwire3/conferences/adobe-summit-2020/workspace/wp2aem/ui.content/src/main/content/jcr_root/conf/wp2aem/settings/wcm/templates/page-content/initial/.content.xml",
+        "filename": "ui.content/src/main/content/jcr_root/conf/wp2aem/settings/wcm/templates/page-content/initial/.content.xml",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
@@ -259,28 +259,29 @@
         "y": 520,
         "wires": [
             [
-                "b2fda289.2d59c"
+                "6bd2294f.f0aff8"
             ]
         ]
     },
     {
-        "id": "d2e58c58.27bfb",
+        "id": "b7a4771f.a97718",
         "type": "debug",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "x": 610,
         "y": 600,
         "wires": []
     },
     {
-        "id": "b2fda289.2d59c",
+        "id": "6bd2294f.f0aff8",
         "type": "xml",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "xml to json",
         "property": "payload",
         "attr": "",
@@ -289,14 +290,14 @@
         "y": 520,
         "wires": [
             [
-                "f675ee68.6f31c"
+                "f7462334.631ab"
             ]
         ]
     },
     {
-        "id": "4a972c55.d3ce24",
+        "id": "26a5e5f6.81051a",
         "type": "file",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": ".content.xml",
         "filename": "",
         "appendNewline": true,
@@ -307,14 +308,14 @@
         "y": 600,
         "wires": [
             [
-                "d2e58c58.27bfb"
+                "b7a4771f.a97718"
             ]
         ]
     },
     {
-        "id": "88d070e1.ec33c",
+        "id": "4bcec00e.26854",
         "type": "xml",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "json-to-xml",
         "property": "payload",
         "attr": "",
@@ -323,14 +324,14 @@
         "y": 520,
         "wires": [
             [
-                "85292fad.478a5"
+                "7d4928a1.150178"
             ]
         ]
     },
     {
-        "id": "f675ee68.6f31c",
+        "id": "f7462334.631ab",
         "type": "function",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "enrich template",
         "func": "// Inject jcr:content properties\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:title'] = msg.page.jcr_title\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:description'] = msg.page.jcr_description\nmsg.payload['jcr:root']['jcr:content'][0]['$']['sling:vanityPath'] = msg.page.sling_vanityPath\n\n    \n// Inject components\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
         "outputs": 1,
@@ -339,27 +340,27 @@
         "y": 520,
         "wires": [
             [
-                "88d070e1.ec33c"
+                "4bcec00e.26854"
             ]
         ]
     },
     {
-        "id": "43d1f47b.a4d93c",
+        "id": "c6d7362.bf2ecc8",
         "type": "FirstNode",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "x": 820,
         "y": 400,
         "wires": [
             [
-                "b18d8c08.a20c2"
+                "6a7d0d23.41c4b4"
             ]
         ]
     },
     {
-        "id": "b18d8c08.a20c2",
+        "id": "6a7d0d23.41c4b4",
         "type": "change",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "rules": [
             {
@@ -379,14 +380,14 @@
         "y": 400,
         "wires": [
             [
-                "24687e1f.622432"
+                "7bd87955.a6d038"
             ]
         ]
     },
     {
-        "id": "e6c1682a.4347c8",
+        "id": "477d1643.933908",
         "type": "function",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Define .content.xml filename and path",
         "func": "// TODO: Extract into configuration\nlet dateParts = msg.payload.date.match(/(\\d{4})-(\\d{2})-(\\d{2}).*/);\nlet datePath = `${dateParts[1]}/${dateParts[2]}/${dateParts[3]}`\n\nmsg.contentXmlPath = `ui.content/src/main/content/jcr_root/content/wp2aem/us/en/posts/${datePath}/${msg.payload.slug}/.content.xml`\nconsole.log(msg.contentXmlPath)\nreturn msg;",
         "outputs": 1,
@@ -395,14 +396,14 @@
         "y": 400,
         "wires": [
             [
-                "a8957434.a77368"
+                "83ccc174.6df86"
             ]
         ]
     },
     {
-        "id": "85292fad.478a5",
+        "id": "7d4928a1.150178",
         "type": "change",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "",
         "rules": [
             {
@@ -422,14 +423,14 @@
         "y": 600,
         "wires": [
             [
-                "4a972c55.d3ce24"
+                "26a5e5f6.81051a"
             ]
         ]
     },
     {
-        "id": "a8957434.a77368",
+        "id": "83ccc174.6df86",
         "type": "function",
-        "z": "79da2ecb.7de1b",
+        "z": "4a7ce238.d8e8bc",
         "name": "Page Properties Mapper",
         "func": "// TODO: Strip HTML from jcr_description\nmsg.page = {\n    jcr_title: msg.payload.title.rendered,\n    jcr_description: msg.payload.excerpt.rendered,\n    sling_vanityPath: msg.payload.slug\n}\nreturn msg;",
         "outputs": 1,
@@ -438,7 +439,7 @@
         "y": 400,
         "wires": [
             [
-                "43d1f47b.a4d93c"
+                "c6d7362.bf2ecc8"
             ]
         ]
     }
