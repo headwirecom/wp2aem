@@ -5,6 +5,7 @@ of this project are as follows:
 
 1. Deploy to AEM as a Cloud Service.
 2. Develop a flexible content migration tool outside of AEM using an opensource project.
+3. Map content to AEM Core Components.
 
 ## Prerequisites
 

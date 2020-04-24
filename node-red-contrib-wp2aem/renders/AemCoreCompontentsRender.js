@@ -54,5 +54,19 @@ class AemCoreCompontentsRender extends Renderer {
     return `<img src="${image.attributes.url}"></img>`
   }
 
+ *VideoEmbed(videoEmbed) {
+    // TODO
+    /*
+    let video = {
+      'jcr:primaryType': "nt:unstructured",
+      'sling:resourceType': 'wp2aem/components/embed',
+      'type': 'html',
+      'html': `<iframe  src="${videoEmbed.attributes.url}"></iframe>`
+    }
+    return video
+    */
+
+    return `<iframe  src="${videoEmbed.attributes.url}" width="640" height="360" frameborder="0" allowfullscreen></iframe>`
+  }
 }
 module.exports = AemCoreCompontentsRender
