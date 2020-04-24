@@ -51,7 +51,15 @@ class AemCoreCompontentsRender extends Renderer {
   }
 
   *Image(image) {
-    return `<img src="${image.attributes.url}"></img>`
+    const html = `<img src="${image.attributes.url}"></img>`
+    const textComponent = {
+      'jcr:createdBy': 'admin',
+        'jcr:primaryType': 'nt:unstructured',
+        'sling:resourceType': 'core/wcm/components/text/v2/text',
+        'text': html,
+        'textIsRich': true,
+    }
+    return textComponent
   }
 
  *VideoEmbed(videoEmbed) {
