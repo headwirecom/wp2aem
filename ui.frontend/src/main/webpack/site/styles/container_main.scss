@@ -1,6 +1,8 @@
 
 //== Container main content style, used on page template
 
-main.container {
-    padding: .5em 1em;
+.root.container {
+  margin: 0 auto;
+  max-width: 1080px;
+  background: white;
 }
