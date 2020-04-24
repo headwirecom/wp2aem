@@ -1,11 +1,13 @@
 //== Base
 
-html,
+html {
+  font-size: 100%;
+}
 body {
     margin: 0;
-    font-size:   14px;
+    font-size:   .875rem;
     font-family: $font-family;
-    line-height: $font-height;
+    line-height: 1.6;
     color:       $color-foreground;
     background:  black;
 
@@ -18,6 +20,8 @@ body {
 
 a {
     color: $color-link;
+    font-weight: 600;
+    text-decoration: none;
 
     @media (prefers-color-scheme: dark) {
         color: $color-link-dark;
@@ -37,6 +41,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     line-height: 1.3;
     font-weight: 700;
+}
+
+h1 { 
+  font-size: 2rem;
 }
 
 p {
