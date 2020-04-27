@@ -1,23 +1,27 @@
 //== Base
 
-html,
+html {
+  font-size: 100%;
+}
 body {
     margin: 0;
-    font-size:   $font-size;
+    font-size:   .875rem;
     font-family: $font-family;
-    line-height: $font-height;
+    line-height: 1.6;
     color:       $color-foreground;
-    background:  $color-background;
+    background:  black;
 
     @media (prefers-color-scheme: dark) {
         color:       $color-foreground-dark;
         background:  $color-background-dark;
     }
-}
 
+}
 
 a {
     color: $color-link;
+    font-weight: 600;
+    text-decoration: none;
 
     @media (prefers-color-scheme: dark) {
         color: $color-link-dark;
@@ -30,4 +34,24 @@ optgroup,
 select,
 textarea {
     font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family;
+    color: #000;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+h1 { 
+  font-size: 2rem;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 1.25rem;
+}
+
+img {
+  max-width: 100%
 }

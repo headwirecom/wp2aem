@@ -18,7 +18,7 @@ module.exports = merge(common, {
         inline: true,
         proxy: [{
             context: ['/content', '/etc.clientlibs'],
-            target: 'http://localhost:4502',
+            target: 'http://192.168.1.122:4502',
         }]
     }
 });

@@ -2,15 +2,14 @@
 //== XF Header style, used on page template
 
 header.experiencefragment {
-    padding: .5em 1em;
-    border-bottom: 1px solid $color-foreground;
+    background-color: #2a2a2a;
+    border-bottom: 5px solid #e64946;
+    text-transform: uppercase;
 
-    @media (prefers-color-scheme: dark) {
-        border-bottom-color: $color-foreground-dark;
-    }
+    padding: .5em 1em;
 
     a {
-        color: $color-foreground;
+        color: white;
         text-decoration: none;
 
         @media (prefers-color-scheme: dark) {

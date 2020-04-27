@@ -1,6 +1,13 @@
 
 //== Container main content style, used on page template
 
+.root.container {
+  margin: 0 auto;
+  max-width: 1080px;
+  background: white;
+}
+
 main.container {
-    padding: .5em 1em;
+    padding: 25px;
+    width: 63%;
 }
