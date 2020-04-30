@@ -34,7 +34,7 @@
         "method": "GET",
         "ret": "txt",
         "paytoqs": false,
-        "url": "http://oh8stn.org/wp-json/wp/v2/posts",
+        "url": "http://yoursitegoeshere/wp-json/wp/v2/posts",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -52,7 +52,7 @@
         "type": "function",
         "z": "4a7ce238.d8e8bc",
         "name": "Get Paginated Post URLs",
-        "func": "let paginatedUrls = []\n// push the first page manually\npaginatedUrls.push(`${msg.responseUrl}`)\npaginatedUrls.push(msg.responseUrl)\n//for (let i = 2; i <= msg.headers['x-wp-totalpages']; i++) {   \nfor (let i = 2; i <= 2; i++) {   \n  let paginationUrl = `${msg.responseUrl}?page=${i}`     \n  paginatedUrls.push(paginationUrl)\n  console.log(paginationUrl)\n}\nmsg.payload = paginatedUrls\nreturn msg",
+        "func": "let paginatedUrls = []\n// push the first page manually\npaginatedUrls.push(`${msg.responseUrl}`)\npaginatedUrls.push(msg.responseUrl)\nfor (let i = 2; i <= msg.headers['x-wp-totalpages']; i++) {   \n//for (let i = 2; i <= 2; i++) {   \n  let paginationUrl = `${msg.responseUrl}?page=${i}`     \n  paginatedUrls.push(paginationUrl)\n  console.log(paginationUrl)\n}\nmsg.payload = paginatedUrls\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "x": 150,
@@ -216,7 +216,7 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 1070,
+        "x": 1250,
         "y": 260,
         "wires": [
             [
@@ -241,7 +241,7 @@
         "y": 260,
         "wires": [
             [
-                "9285da2d.6ec868"
+                "fcbfa1b7.274fe"
             ]
         ]
     },
@@ -255,8 +255,8 @@
         "chunk": false,
         "sendError": false,
         "encoding": "none",
-        "x": 160,
-        "y": 520,
+        "x": 120,
+        "y": 420,
         "wires": [
             [
                 "6bd2294f.f0aff8"
@@ -274,8 +274,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 610,
-        "y": 600,
+        "x": 570,
+        "y": 500,
         "wires": []
     },
     {
@@ -286,8 +286,8 @@
         "property": "payload",
         "attr": "",
         "chr": "",
-        "x": 350,
-        "y": 520,
+        "x": 310,
+        "y": 420,
         "wires": [
             [
                 "f7462334.631ab"
@@ -304,8 +304,8 @@
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 390,
-        "y": 600,
+        "x": 350,
+        "y": 500,
         "wires": [
             [
                 "b7a4771f.a97718"
@@ -320,8 +320,8 @@
         "property": "payload",
         "attr": "",
         "chr": "",
-        "x": 710,
-        "y": 520,
+        "x": 670,
+        "y": 420,
         "wires": [
             [
                 "7d4928a1.150178"
@@ -336,8 +336,8 @@
         "func": "// Inject jcr:content properties\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:title'] = msg.page.jcr_title\nmsg.payload['jcr:root']['jcr:content'][0]['$']['jcr:description'] = msg.page.jcr_description\nmsg.payload['jcr:root']['jcr:content'][0]['$']['sling:vanityPath'] = msg.page.sling_vanityPath\n\n    \n// Inject components\nconsole.log(msg.components.length)\nfor (let i = 0; i < msg.components.length; i++) {\n  let nodeName = 'component_' + (i + 1)\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName] = {}\n  msg.payload['jcr:root']['jcr:content'][0]['root'][0]['container'][0]['container'][0][nodeName]['$'] = msg.components[i]\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 520,
-        "y": 520,
+        "x": 480,
+        "y": 420,
         "wires": [
             [
                 "4bcec00e.26854"
@@ -349,8 +349,8 @@
         "type": "FirstNode",
         "z": "4a7ce238.d8e8bc",
         "name": "",
-        "x": 820,
-        "y": 400,
+        "x": 800,
+        "y": 340,
         "wires": [
             [
                 "6a7d0d23.41c4b4"
@@ -377,7 +377,7 @@
         "to": "",
         "reg": false,
         "x": 1080,
-        "y": 400,
+        "y": 340,
         "wires": [
             [
                 "7bd87955.a6d038"
@@ -393,7 +393,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 190,
-        "y": 400,
+        "y": 340,
         "wires": [
             [
                 "83ccc174.6df86"
@@ -419,8 +419,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 170,
-        "y": 600,
+        "x": 130,
+        "y": 500,
         "wires": [
             [
                 "26a5e5f6.81051a"
@@ -436,10 +436,33 @@
         "outputs": 1,
         "noerr": 0,
         "x": 510,
-        "y": 400,
+        "y": 340,
         "wires": [
             [
                 "c6d7362.bf2ecc8"
+            ]
+        ]
+    },
+    {
+        "id": "fcbfa1b7.274fe",
+        "type": "delay",
+        "z": "4a7ce238.d8e8bc",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1080,
+        "y": 260,
+        "wires": [
+            [
+                "9285da2d.6ec868"
             ]
         ]
     }
