@@ -43,7 +43,7 @@
 
 4. Click the `Deploy` button in the upper right corner.
 
-5. Run the flow by clicking the blow box next to the `timestamp` node.
+5. Run the flow by clicking the blue box next to the `timestamp` node.
 
 6. You should now be able to run the `build.sh` script to deploy the AEM application and content package.
 
