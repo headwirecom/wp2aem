@@ -37,10 +37,14 @@
 
 1. Open a browser and visit [http://localhost:1880/](http://localhost:1880/).
 
-2. Click on the "Single Page Sample" tab.
+2. Import the sample flow. Click the hamburger menu, then Import. Select `wp2aem/node-red-contrib-wp2aem-sample/flow-single-page-sample.json`.
 
-3. Import the sample flow. Click the hamburger menu, then Import. Select `wp2aem/node-red-contrib-wp2aem-sample/flow-single-page-sample.json`.
+3. Click on the "http request" node and replace "yoursitegoeshere" with your WordPress site's domain name.
 
 4. Click the `Deploy` button in the upper right corner.
 
 5. Run the flow by clicking the blow box next to the `timestamp` node.
+
+6. You should now be able to run the `build.sh` script to deploy the AEM application and content package.
+
+Note: For a full site migration perform the steps above for the "flow-fetch-all-and-write-to-disk.json" flow.
